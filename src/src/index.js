@@ -68,3 +68,28 @@ function initCarousel(id) {
 function getAll(selector) {
     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+	let cardToggles = document.getElementsByClassName('card-toggle');
+	for (let i = 0; i < cardToggles.length; i++) {
+		cardToggles[i].addEventListener('click', e => {
+            let divs = document.getElementsByClassName('collapsible');
+            let expander = document.getElementById("collapsible-button");
+            for (i = 0; i < divs.length; i++) {
+                divs[i].classList.toggle('is-hidden');
+              }
+            if (expander.className.includes("fa-angle-down"))
+            {
+                expander.classList.toggle("fa-angle-down");
+                expander.classList.toggle("fa-angle-up");
+            }
+            else if (expander.className.includes("fa-angle-up"))
+            {
+                expander.classList.toggle("fa-angle-up");
+                expander.classList.toggle("fa-angle-down");
+            }
+            // classList.forEach(item => item.classList.toggle('is-hidden'));
+			// e.currentTarget.parentElement.parentElement.childNodes[3].classList.toggle('is-hidden');
+		});
+	}
+});
